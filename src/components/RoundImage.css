@@ -1,8 +1,11 @@
 .round-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid white;
-    object-fit: cover;
-  }
-  
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid white;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 450px;
+}
