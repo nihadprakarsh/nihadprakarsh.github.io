@@ -1,40 +1,101 @@
 import React from "react";
-import "./Navbar.css"; // Import custom CSS
+import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import "./Navbar.css";
 
-var Name = "{ NIHAD PRAKARSH }";
 const Navbar = () => {
+  const navigate = useNavigate();
+
+
+  const [hoveredButton, setHoveredButton] = useState(null);
+
+  const handleMouseEnter = (buttonName) => {
+    setHoveredButton(buttonName);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredButton(null);
+  };
+
+  const getButtonStyle = (buttonName) => ({
+    backgroundColor: hoveredButton === buttonName ? '#6c757d' : 'transparent', 
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    padding: '10px 20px',
+    fontSize: '16px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease, transform 0.3s ease',
+    transform: hoveredButton === buttonName ? 'scale(1.02)' : 'scale(1)', 
+    boxShadow: hoveredButton === buttonName ? '0 4px 8px rgba(0, 0, 0, 0.2)' : 'none'
+  });
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-brand">
         <a href="" target="_blank" className="href">
-          {Name}
+          {`{ NIHAD PRAKARSH }`}
         </a>
       </div>
       <ul className="navbar-nav">
         <li className="nav-item">
-          <a className="nav-link" href="#">
+          <button
+            className="nav-link"
+            onClick={() => handleNavigation("/about")}
+            style={getButtonStyle("about")}
+            onMouseEnter={() => handleMouseEnter("about")}
+            onMouseLeave={handleMouseLeave}
+          >
             About
-          </a>
+          </button>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
+          <button
+            className="nav-link"
+            onClick={() => handleNavigation("/blog")}
+            style={getButtonStyle("blog")}
+            onMouseEnter={() => handleMouseEnter("blog")}
+            onMouseLeave={handleMouseLeave}
+          >
             Blog
-          </a>
+          </button>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
+          <button
+            className="nav-link"
+            onClick={() => handleNavigation("/timeline")}
+            style={getButtonStyle("timeline")}
+            onMouseEnter={() => handleMouseEnter("timeline")}
+            onMouseLeave={handleMouseLeave}
+          >
             Timeline
-          </a>
+          </button>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
+          <button
+            className="nav-link"
+            onClick={() => handleNavigation("/contact")}
+            style={getButtonStyle("contact")}
+            onMouseEnter={() => handleMouseEnter("contact")}
+            onMouseLeave={handleMouseLeave}
+          >
             Contact
-          </a>
+          </button>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
+          <button
+            className="nav-link"
+            onClick={() => handleNavigation("/resume")}
+            style={getButtonStyle("resume")}
+            onMouseEnter={() => handleMouseEnter("resume")}
+            onMouseLeave={handleMouseLeave}
+          >
             Resume
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
