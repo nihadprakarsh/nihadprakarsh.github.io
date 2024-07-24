@@ -14,6 +14,7 @@ function App() {
       <Home></Home>
       <Navbar></Navbar>
       <TypingEffect></TypingEffect>
+      <Picture></Picture>
     </>
   );
 }
