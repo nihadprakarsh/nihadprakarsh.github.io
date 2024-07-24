@@ -1,9 +1,10 @@
 import React from 'react';
 import './RoundImage.css'; 
+import DP from "/src/assets/images/dp-1.jpg"
 const Picture = () => {
   return (
     <div className="image-container">
-        <img src="/src/assets/images/dp-1.jpg" alt="Background Image" className="round-image" />
+        <img src={DP} alt="Background Image" className="round-image" />
       </div>
   );
 };
