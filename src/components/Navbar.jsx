@@ -21,7 +21,7 @@ const Navbar = () => {
     color: "white",
     border: "none",
     borderRadius: "5px",
-    padding: "10px 20px",
+    padding: "10px 5px",
     fontSize: "16px",
     cursor: "pointer",
     transition: "background-color 0.3s ease, transform 0.3s ease",
