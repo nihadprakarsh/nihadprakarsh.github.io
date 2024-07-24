@@ -1,7 +1,8 @@
+import DP from "/assets/bg-1.png"
 const Home = () => {
     return (
         <div className="image-container">
-        <img src="/assets/bg-1.png" alt="Background Image" className="fullscreen-image" />
+        <img src={DP} alt="Background Image" className="fullscreen-image" />
       </div>
     );
   };
