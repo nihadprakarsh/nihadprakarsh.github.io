@@ -63,6 +63,17 @@
 
 /* Media Queries for Responsiveness */
 
+@media (max-width: 1280px) {
+  .navbar-brand {
+    padding-left: 80px;
+    font-size: 18px;
+  }
+
+  .navbar-nav {
+    padding-right: 80px;
+  }
+}
+
 @media (max-width: 1024px) {
   .navbar-brand {
     padding-left: 50px;
@@ -112,5 +123,16 @@
     padding: 10px;
     width: 100%;
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand {
+    font-size: 14px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    padding: 8px;
   }
 }
