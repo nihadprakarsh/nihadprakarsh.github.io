@@ -21,6 +21,8 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
+  pointer-events: none; 
+  user-select: none; 
 }
 
 .fullscreen-image {
@@ -41,7 +43,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px
+  font-size: 30px;
+  pointer-events: none; 
+  user-select: none; 
 }
 
 /* Media Queries for Responsiveness */
