@@ -12,7 +12,7 @@ const About = () => {
         style={{ paddingLeft: 530, paddingRight: 650 }}
       >
         <div className="App">
-          <h1 className="centered-heading">About</h1>
+          <h1 className="centered-heading">ABOUT</h1>
         </div>
         <div className="paragraph" style={{ paddingTop: 100 }}>
           <p>

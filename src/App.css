@@ -78,13 +78,14 @@ body {
   transform: translateX(-50%);
   width: 100%;
   margin: 0; 
-  font-size: 50px;
+  font-size: 30px;
 }
 
 .paragraph {
   text-align: justify;
   margin: 100;  
   font-size: 20px;
+  font-weight: 500;
 }
 
 .card-container {
@@ -97,5 +98,4 @@ body {
 .card-container .mb-3 {
   margin:0%;
 }
-
 

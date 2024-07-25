@@ -12,7 +12,7 @@ const About = () => {
         style={{ paddingLeft: 530, paddingRight: 650 }}
       >
         <div className="App">
-          <h1 className="centered-heading">Blog</h1>
+          <h1 className="centered-heading">LATEST BLOG POST</h1>
         </div>
         
       </div>
