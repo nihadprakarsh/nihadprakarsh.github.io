@@ -41,6 +41,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 30px
 }
 
 /* Media Queries for Responsiveness */
@@ -62,4 +63,22 @@ body {
   .typewriter {
     font-size: 0.9rem; 
   }
+}
+
+
+.centered-heading {
+  text-align: center;
+  position: fixed;
+  top: 10%;
+  left: 46%;
+  transform: translateX(-50%);
+  width: 100%;
+  margin: 0; 
+  font-size: 50px;
+}
+
+.paragraph {
+  text-align: justify;
+  margin: 100;  
+  font-size: 20px;
 }

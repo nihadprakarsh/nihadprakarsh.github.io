@@ -9,6 +9,7 @@
     justify-content: space-between;
     align-items: center;
     pointer-events: none; 
+    background-color: #111111;
   }
   
   .side-image {

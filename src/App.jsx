@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Homepage from "./pages/HomePage.jsx";
 import About from "./pages/About.jsx";
 import Navbar from "./components/Navbar.jsx";
-// import Contact from "./pages/Contact.jsx"
 
 export const withRouter = (Component) => {
   const Wrapper = (props) => {
@@ -29,7 +28,6 @@ function App() {
         <Route path="/resume" element={<About />}></Route>
       </Routes>
     </Router>
-    // <About></About>
   );
 }
 
