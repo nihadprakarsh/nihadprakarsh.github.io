@@ -1,32 +1,96 @@
-import { useState } from "react";
-import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { motion, AnimatePresence } from 'framer-motion';
 import Homepage from "./pages/HomePage.jsx";
 import About from "./pages/About.jsx";
 import Navbar from "./components/Navbar.jsx";
-
-export const withRouter = (Component) => {
-  const Wrapper = (props) => {
-    const history = useNavigate();
-    return <Component history={history} {...props} />;
-  };
-  return Wrapper;
-};
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Homepage />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/blog" element={<About />}></Route>
-        <Route path="/timeline" element={<About />}></Route>
-        <Route path="/contact" element={<About />}></Route>
-        <Route path="/resume" element={<About />}></Route>
-      </Routes>
+      <AnimatePresence>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Homepage />
+              </motion.div>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <About />
+              </motion.div>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <About />
+              </motion.div>
+            }
+          />
+          <Route
+            path="/timeline"
+            element={
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <About />
+              </motion.div>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <About />
+              </motion.div>
+            }
+          />
+          <Route
+            path="/resume"
+            element={
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <About />
+              </motion.div>
+            }
+          />
+        </Routes>
+      </AnimatePresence>
     </Router>
   );
 }
