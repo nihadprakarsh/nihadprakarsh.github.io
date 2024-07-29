@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Homepage from "./pages/HomePage.jsx";
 import About from "./pages/About.jsx";
 import Navbar from "./components/Navbar.jsx";
+import Timeline from "./pages/Timeline.jsx";
 import Blog from "./pages/Blog.jsx";
 import "./App.css";
 
@@ -60,7 +61,7 @@ function App() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <About />
+                <Timeline />
               </motion.div>
             }
           />

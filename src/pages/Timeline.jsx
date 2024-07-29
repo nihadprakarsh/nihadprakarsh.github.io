@@ -2,7 +2,7 @@ import leftImage from "/assets/left.png";
 import rightImage from "/assets/right.png";
 import "/src/components/SideImages.css";
 
-const About = () => {
+const Timeline = () => {
   return (
     <div className="side-images-container">
       <img src={leftImage} alt="Left Side" className="side-image left" />
@@ -12,7 +12,7 @@ const About = () => {
         style={{ paddingLeft: 530, paddingRight: 650 }}
       >
         <div className="App">
-          <h1 className="centered-heading">LATEST BLOG POST</h1>
+          <h1 className="centered-heading">TIMELINE</h1>
         </div>
       </div>
 
@@ -21,4 +21,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Timeline;
