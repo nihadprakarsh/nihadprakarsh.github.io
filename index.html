@@ -95,18 +95,22 @@
               </article>
               <article
                 class="hero-panel journey-teaser"
-                data-journey-trigger
-                data-season="2023-2024"
-                data-checkpoint="2023-kanpur-regional"
-                tabindex="0"
-                role="button"
-                aria-haspopup="dialog"
-                aria-controls="journey-modal"
               >
                 <p class="hero-panel-label">ICPC Journey</p>
                 <strong>Rank 41</strong>
                 <span>Asia Kanpur Regional 2023</span>
                 <small>Open the interactive CodeBreakers run</small>
+                <button
+                  type="button"
+                  class="journey-launch"
+                  data-journey-trigger
+                  data-season="2023-2024"
+                  data-checkpoint="2023-kanpur-regional"
+                  aria-haspopup="dialog"
+                  aria-controls="journey-modal"
+                >
+                  Play ICPC Journey
+                </button>
               </article>
               <article class="hero-panel hero-panel-stack">
                 <p class="hero-panel-label">Core Stack</p>
@@ -153,23 +157,39 @@
             <div class="achievement-grid">
               <article
                 class="achievement-card journey-trigger reveal"
-                data-journey-trigger
-                data-season="2023-2024"
-                data-checkpoint="2023-kanpur-regional"
               >
                 <p class="achievement-value">Rank 41</p>
                 <p class="achievement-label">ICPC Asia Kanpur Regional Contest 2023</p>
                 <p class="achievement-hint">Click to play the full ICPC journey</p>
+                <button
+                  type="button"
+                  class="journey-launch"
+                  data-journey-trigger
+                  data-season="2023-2024"
+                  data-checkpoint="2023-kanpur-regional"
+                  aria-haspopup="dialog"
+                  aria-controls="journey-modal"
+                >
+                  Play Journey
+                </button>
               </article>
               <article
                 class="achievement-card journey-trigger reveal"
-                data-journey-trigger
-                data-season="2022-2023"
-                data-checkpoint="2022-amritapuri-regional"
               >
                 <p class="achievement-value">Rank 96</p>
                 <p class="achievement-label">ICPC Asia Amritapuri Regional Contest 2022</p>
                 <p class="achievement-hint">Replay the earlier regional season</p>
+                <button
+                  type="button"
+                  class="journey-launch"
+                  data-journey-trigger
+                  data-season="2022-2023"
+                  data-checkpoint="2022-amritapuri-regional"
+                  aria-haspopup="dialog"
+                  aria-controls="journey-modal"
+                >
+                  Play Journey
+                </button>
               </article>
               <article class="achievement-card reveal">
                 <p class="achievement-value">2019</p>
@@ -372,7 +392,13 @@
         aria-labelledby="journey-title"
         aria-describedby="journey-description"
       >
-        <button type="button" class="journey-close" data-journey-close aria-label="Close ICPC journey">
+        <button
+          type="button"
+          class="journey-close"
+          id="journey-close-main"
+          data-journey-close
+          aria-label="Close ICPC journey"
+        >
           Close
         </button>
 
@@ -453,6 +479,7 @@
       const journeyStatRegionals = document.getElementById("journey-stat-regionals");
       const journeyStatBest = document.getElementById("journey-stat-best");
       const journeyCloseButtons = [...document.querySelectorAll("[data-journey-close]")];
+      const journeyCloseMain = document.getElementById("journey-close-main");
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const journeyData = {
         seasons: [
@@ -715,7 +742,9 @@
         }
         document.body.classList.add("journey-open");
         setTimeout(() => {
-          journeyNext.focus();
+          if (journeyCloseMain) {
+            journeyCloseMain.focus();
+          }
         }, prefersReducedMotion ? 0 : 180);
       };
 
