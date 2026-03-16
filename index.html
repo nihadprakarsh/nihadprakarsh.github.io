@@ -93,10 +93,20 @@
                 <strong>Oracle</strong>
                 <span>Software Developer</span>
               </article>
-              <article class="hero-panel">
-                <p class="hero-panel-label">Competitive</p>
-                <strong>AIR 41</strong>
-                <span>ICPC Onsite Regionals 2024</span>
+              <article
+                class="hero-panel journey-teaser"
+                data-journey-trigger
+                data-season="2023-2024"
+                data-checkpoint="2023-kanpur-regional"
+                tabindex="0"
+                role="button"
+                aria-haspopup="dialog"
+                aria-controls="journey-modal"
+              >
+                <p class="hero-panel-label">ICPC Journey</p>
+                <strong>Rank 41</strong>
+                <span>Asia Kanpur Regional 2023</span>
+                <small>Open the interactive CodeBreakers run</small>
               </article>
               <article class="hero-panel hero-panel-stack">
                 <p class="hero-panel-label">Core Stack</p>
@@ -141,13 +151,25 @@
 
             <h3 class="sub-title">Achievements</h3>
             <div class="achievement-grid">
-              <article class="achievement-card reveal">
-                <p class="achievement-value">AIR 41</p>
-                <p class="achievement-label">ICPC Onsite Regionals 2024</p>
+              <article
+                class="achievement-card journey-trigger reveal"
+                data-journey-trigger
+                data-season="2023-2024"
+                data-checkpoint="2023-kanpur-regional"
+              >
+                <p class="achievement-value">Rank 41</p>
+                <p class="achievement-label">ICPC Asia Kanpur Regional Contest 2023</p>
+                <p class="achievement-hint">Click to play the full ICPC journey</p>
               </article>
-              <article class="achievement-card reveal">
-                <p class="achievement-value">AIR 92</p>
-                <p class="achievement-label">ICPC Onsite Regionals 2023</p>
+              <article
+                class="achievement-card journey-trigger reveal"
+                data-journey-trigger
+                data-season="2022-2023"
+                data-checkpoint="2022-amritapuri-regional"
+              >
+                <p class="achievement-value">Rank 96</p>
+                <p class="achievement-label">ICPC Asia Amritapuri Regional Contest 2022</p>
+                <p class="achievement-hint">Replay the earlier regional season</p>
               </article>
               <article class="achievement-card reveal">
                 <p class="achievement-value">2019</p>
@@ -341,12 +363,205 @@
       <footer class="site-footer">© 2026 Nihad Prakarsh. All rights reserved.</footer>
     </div>
 
+    <div class="journey-modal" id="journey-modal" hidden>
+      <div class="journey-backdrop" data-journey-close></div>
+      <div
+        class="journey-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="journey-title"
+        aria-describedby="journey-description"
+      >
+        <button type="button" class="journey-close" data-journey-close aria-label="Close ICPC journey">
+          Close
+        </button>
+
+        <aside class="journey-sidebar">
+          <p class="section-kicker">Interactive Journey</p>
+          <h2 id="journey-title" class="journey-title">ICPC Journey Map</h2>
+          <p id="journey-description" class="journey-description">
+            Follow the CodeBreakers run season by season and move through each contest checkpoint.
+          </p>
+
+          <div class="journey-profile">
+            <strong>Mr. Nihad Prakarsh</strong>
+            <span>M.S. Ramaiah Institute of Technology</span>
+            <span>Bangalore, Karnataka, India</span>
+            <span>nihadprakarsh@gmail.com</span>
+          </div>
+
+          <div class="journey-season-list" id="journey-season-list"></div>
+
+          <div class="journey-stats">
+            <article class="journey-stat">
+              <span class="journey-stat-label">Contests</span>
+              <strong id="journey-stat-contests">0</strong>
+            </article>
+            <article class="journey-stat">
+              <span class="journey-stat-label">Regionals</span>
+              <strong id="journey-stat-regionals">0</strong>
+            </article>
+            <article class="journey-stat">
+              <span class="journey-stat-label">Best Rank</span>
+              <strong id="journey-stat-best">-</strong>
+            </article>
+          </div>
+
+          <div class="journey-progress-block">
+            <div class="journey-progress-head">
+              <span>Season progress</span>
+              <span id="journey-progress-text">0 / 0</span>
+            </div>
+            <div class="journey-progress-track">
+              <span class="journey-progress-fill" id="journey-progress-fill"></span>
+            </div>
+          </div>
+
+          <div class="journey-controls">
+            <button type="button" class="journey-control-button" id="journey-prev">Previous</button>
+            <button type="button" class="journey-control-button journey-control-button-primary" id="journey-next">
+              Next
+            </button>
+          </div>
+        </aside>
+
+        <section class="journey-main">
+          <div class="journey-map">
+            <div class="journey-path" id="journey-path"></div>
+          </div>
+          <article class="journey-detail" id="journey-detail"></article>
+        </section>
+      </div>
+    </div>
+
     <script>
       const navLinks = [...document.querySelectorAll(".nav-link")];
       const panels = [...document.querySelectorAll(".panel")];
       const interactiveCards = [
         ...document.querySelectorAll(".info-card, .achievement-card, .impact-card"),
       ];
+      const journeyTriggers = [...document.querySelectorAll("[data-journey-trigger]")];
+      const journeyModal = document.getElementById("journey-modal");
+      const journeySeasonList = document.getElementById("journey-season-list");
+      const journeyPath = document.getElementById("journey-path");
+      const journeyDetail = document.getElementById("journey-detail");
+      const journeyPrev = document.getElementById("journey-prev");
+      const journeyNext = document.getElementById("journey-next");
+      const journeyProgressFill = document.getElementById("journey-progress-fill");
+      const journeyProgressText = document.getElementById("journey-progress-text");
+      const journeyStatContests = document.getElementById("journey-stat-contests");
+      const journeyStatRegionals = document.getElementById("journey-stat-regionals");
+      const journeyStatBest = document.getElementById("journey-stat-best");
+      const journeyCloseButtons = [...document.querySelectorAll("[data-journey-close]")];
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const journeyData = {
+        seasons: [
+          {
+            id: "2023-2024",
+            label: "2023-2024",
+            theme: "CodeBreakers climbed from online rounds to a top regional finish.",
+            checkpoints: [
+              {
+                id: "2023-amritapuri-online",
+                badge: "Level 1",
+                stage: "First Round Online",
+                shortTitle: "Amritapuri Online",
+                title: "The 2023 ICPC Asia Amritapuri First Round Online Programming Contest",
+                year: "2023-2024",
+                role: "Contestant",
+                team: "CodeBreakers",
+                rank: "-",
+                placement: "Contestant",
+                story:
+                  "The season opened with the online first round, where CodeBreakers started the path toward the regional contests.",
+              },
+              {
+                id: "2023-kanpur-preliminary",
+                badge: "Level 2",
+                stage: "Preliminary",
+                shortTitle: "Kanpur Preliminary",
+                title: "The 2023 ICPC Asia Kanpur Preliminary Contest",
+                year: "2023-2024",
+                role: "Contestant",
+                team: "CodeBreakers",
+                rank: "-",
+                placement: "Contestant",
+                story:
+                  "The Kanpur preliminary acted like the next checkpoint, sharpening pace, coordination, and contest endurance.",
+              },
+              {
+                id: "2023-amritapuri-regional",
+                badge: "Level 3",
+                stage: "Regional",
+                shortTitle: "Amritapuri Doublesite",
+                title: "The 2023 ICPC Asia Amritapuri Doublesite Regional Contest",
+                year: "2023-2024",
+                role: "Contestant",
+                team: "CodeBreakers",
+                rank: "130",
+                placement: "Honorable Mention",
+                story:
+                  "CodeBreakers reached the doublesite regional, finished with rank 130, and earned an Honorable Mention.",
+              },
+              {
+                id: "2023-kanpur-regional",
+                badge: "Boss Level",
+                stage: "Regional Peak",
+                shortTitle: "Kanpur Regional",
+                title: "The 2023 ICPC Asia Kanpur Regional Contest",
+                year: "2023-2024",
+                role: "Contestant",
+                team: "CodeBreakers",
+                rank: "41",
+                placement: "Forty-first Place",
+                story:
+                  "The strongest finish of the journey: CodeBreakers closed the season with rank 41 at the Kanpur Regional.",
+              },
+            ],
+          },
+          {
+            id: "2022-2023",
+            label: "2022-2023",
+            theme: "The first full ICPC season built the CodeBreakers regional base.",
+            checkpoints: [
+              {
+                id: "2022-amritapuri-online",
+                badge: "Level 1",
+                stage: "First Round Online",
+                shortTitle: "Amritapuri Online",
+                title: "The 2022 ICPC Asia Amritapuri First Round Online Programming Contest",
+                year: "2022-2023",
+                role: "Contestant",
+                team: "CodeBreakers",
+                rank: "185",
+                placement: "One-hundred Eighty-fifth Place",
+                story:
+                  "This was the opening checkpoint of the earlier season and the benchmark that started the climb.",
+              },
+              {
+                id: "2022-amritapuri-regional",
+                badge: "Boss Level",
+                stage: "Regional",
+                shortTitle: "Amritapuri Regional",
+                title: "The 2022 ICPC Asia Amritapuri Doublesite Regional Contest",
+                year: "2022-2023",
+                role: "Contestant",
+                team: "CodeBreakers",
+                rank: "96",
+                placement: "Honorable Mention",
+                story:
+                  "The season advanced to the doublesite regional and finished with rank 96 plus an Honorable Mention.",
+              },
+            ],
+          },
+        ],
+      };
+      const journeyState = {
+        seasonId: "2023-2024",
+        checkpointId: "2023-kanpur-regional",
+      };
+      let activeJourneyTrigger = null;
+      let journeyCloseTimer = null;
 
       const setActiveNav = (key) => {
         navLinks.forEach((link) => {
@@ -388,6 +603,241 @@
             activateCard();
           }
         });
+      });
+
+      const getSeason = (seasonId) =>
+        journeyData.seasons.find((season) => season.id === seasonId) || journeyData.seasons[0];
+
+      const getCheckpoint = (season, checkpointId) =>
+        season.checkpoints.find((checkpoint) => checkpoint.id === checkpointId) || season.checkpoints[0];
+
+      const renderJourney = () => {
+        const season = getSeason(journeyState.seasonId);
+        const checkpoint = getCheckpoint(season, journeyState.checkpointId);
+        const checkpointIndex = season.checkpoints.findIndex((item) => item.id === checkpoint.id);
+        const bestRank = season.checkpoints
+          .map((item) => Number(item.rank))
+          .filter((value) => Number.isFinite(value))
+          .sort((left, right) => left - right)[0];
+        const regionals = season.checkpoints.filter((item) => item.stage.toLowerCase().includes("regional")).length;
+        const progress = ((checkpointIndex + 1) / season.checkpoints.length) * 100;
+
+        journeySeasonList.innerHTML = journeyData.seasons
+          .map(
+            (item) => `
+              <button
+                type="button"
+                class="journey-season-button${item.id === season.id ? " is-current" : ""}"
+                data-season-id="${item.id}"
+              >
+                ${item.label}
+              </button>
+            `
+          )
+          .join("");
+
+        journeyPath.innerHTML = season.checkpoints
+          .map(
+            (item, index) => `
+              <button
+                type="button"
+                class="journey-node${item.id === checkpoint.id ? " is-current" : ""}"
+                data-checkpoint-id="${item.id}"
+              >
+                <span class="journey-node-badge">${item.badge}</span>
+                <strong>${item.shortTitle}</strong>
+                <span>${item.stage}</span>
+                <small>Checkpoint ${index + 1}</small>
+              </button>
+            `
+          )
+          .join("");
+
+        journeyDetail.innerHTML = `
+          <p class="journey-detail-kicker">${season.label}</p>
+          <h3>${checkpoint.title}</h3>
+          <p class="journey-detail-theme">${season.theme}</p>
+          <p class="journey-detail-story">${checkpoint.story}</p>
+          <div class="journey-detail-grid">
+            <article class="journey-detail-item">
+              <span>Year</span>
+              <strong>${checkpoint.year}</strong>
+            </article>
+            <article class="journey-detail-item">
+              <span>Role</span>
+              <strong>${checkpoint.role}</strong>
+            </article>
+            <article class="journey-detail-item">
+              <span>Team</span>
+              <strong>${checkpoint.team}</strong>
+            </article>
+            <article class="journey-detail-item">
+              <span>Rank</span>
+              <strong>${checkpoint.rank}</strong>
+            </article>
+            <article class="journey-detail-item journey-detail-item-wide">
+              <span>Placement</span>
+              <strong>${checkpoint.placement}</strong>
+            </article>
+          </div>
+          <p class="journey-detail-tip">Tip: use Previous / Next or click any checkpoint on the map.</p>
+        `;
+
+        journeyStatContests.textContent = String(season.checkpoints.length);
+        journeyStatRegionals.textContent = String(regionals);
+        journeyStatBest.textContent = Number.isFinite(bestRank) ? String(bestRank) : "-";
+        journeyProgressText.textContent = `${checkpointIndex + 1} / ${season.checkpoints.length}`;
+        journeyProgressFill.style.width = `${progress}%`;
+        journeyPrev.disabled = checkpointIndex === 0;
+        journeyNext.disabled = checkpointIndex === season.checkpoints.length - 1;
+      };
+
+      const openJourney = (seasonId, checkpointId, trigger) => {
+        if (journeyCloseTimer) {
+          clearTimeout(journeyCloseTimer);
+          journeyCloseTimer = null;
+        }
+
+        activeJourneyTrigger = trigger;
+        const season = getSeason(seasonId);
+        const checkpoint = getCheckpoint(season, checkpointId);
+        journeyState.seasonId = season.id;
+        journeyState.checkpointId = checkpoint.id;
+        renderJourney();
+        journeyModal.hidden = false;
+        journeyModal.classList.remove("is-closing");
+        if (!prefersReducedMotion) {
+          requestAnimationFrame(() => {
+            journeyModal.classList.add("is-open");
+          });
+        } else {
+          journeyModal.classList.add("is-open");
+        }
+        document.body.classList.add("journey-open");
+        setTimeout(() => {
+          journeyNext.focus();
+        }, prefersReducedMotion ? 0 : 180);
+      };
+
+      const closeJourney = () => {
+        if (journeyModal.hidden) {
+          return;
+        }
+
+        journeyModal.classList.remove("is-open");
+        journeyModal.classList.add("is-closing");
+        document.body.classList.remove("journey-open");
+        const finishClose = () => {
+          journeyModal.hidden = true;
+          journeyModal.classList.remove("is-closing");
+          if (activeJourneyTrigger) {
+            activeJourneyTrigger.focus();
+          }
+        };
+
+        if (prefersReducedMotion) {
+          finishClose();
+          return;
+        }
+
+        journeyCloseTimer = setTimeout(finishClose, 260);
+      };
+
+      const moveJourney = (direction) => {
+        const season = getSeason(journeyState.seasonId);
+        const currentIndex = season.checkpoints.findIndex(
+          (checkpoint) => checkpoint.id === journeyState.checkpointId
+        );
+        const nextIndex = currentIndex + direction;
+
+        if (nextIndex < 0 || nextIndex >= season.checkpoints.length) {
+          return;
+        }
+
+        journeyState.checkpointId = season.checkpoints[nextIndex].id;
+        renderJourney();
+      };
+
+      journeyTriggers.forEach((trigger) => {
+        const openFromTrigger = () => {
+          const seasonId = trigger.dataset.season || journeyData.seasons[0].id;
+          const season = getSeason(seasonId);
+          const checkpointId = trigger.dataset.checkpoint || season.checkpoints[0].id;
+          openJourney(season.id, checkpointId, trigger);
+        };
+
+        trigger.addEventListener("click", openFromTrigger);
+        trigger.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openFromTrigger();
+          }
+        });
+      });
+
+      const animateClick = (node) => {
+        node.classList.remove("is-clicked");
+        void node.offsetWidth;
+        node.classList.add("is-clicked");
+        setTimeout(() => {
+          node.classList.remove("is-clicked");
+        }, 220);
+      };
+
+      document.addEventListener("click", (event) => {
+        const target = event.target.closest(
+          "[data-journey-trigger], .journey-close, .journey-season-button, .journey-control-button, .journey-node"
+        );
+        if (!target) {
+          return;
+        }
+        animateClick(target);
+      });
+
+      journeySeasonList.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-season-id]");
+        if (!button) {
+          return;
+        }
+
+        const season = getSeason(button.dataset.seasonId);
+        journeyState.seasonId = season.id;
+        journeyState.checkpointId = season.checkpoints[0].id;
+        renderJourney();
+      });
+
+      journeyPath.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-checkpoint-id]");
+        if (!button) {
+          return;
+        }
+
+        journeyState.checkpointId = button.dataset.checkpointId;
+        renderJourney();
+      });
+
+      journeyPrev.addEventListener("click", () => moveJourney(-1));
+      journeyNext.addEventListener("click", () => moveJourney(1));
+      journeyCloseButtons.forEach((button) => button.addEventListener("click", closeJourney));
+
+      document.addEventListener("keydown", (event) => {
+        if (journeyModal.hidden) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeJourney();
+        }
+
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          moveJourney(1);
+        }
+
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          moveJourney(-1);
+        }
       });
     </script>
   </body>
