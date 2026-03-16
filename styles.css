@@ -486,6 +486,31 @@ main {
   color: var(--primary);
 }
 
+.journey-launch {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--primary), var(--primary-2));
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.journey-launch:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.35);
+}
+
+.journey-launch:active {
+  transform: translateY(0);
+}
+
 .credential-row {
   margin-top: 14px;
   display: flex;
