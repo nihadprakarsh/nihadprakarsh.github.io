@@ -43,14 +43,17 @@
         </nav>
 
         <div class="social-links">
-          <a href="mailto:nihadprakarsh@gmail.com" aria-label="Email" title="Email">Mail</a>
+          <a href="mailto:nihadprakarsh@gmail.com" class="icon-link" aria-label="Email" title="Email">
+            <img class="icon-img" src="assets/icons/gmail.png" alt="" aria-hidden="true" />
+          </a>
           <a
             href="https://www.linkedin.com/in/nihadprakarsh/"
             target="_blank"
             rel="noopener"
             aria-label="LinkedIn"
             title="LinkedIn"
-            >IN</a
+            class="icon-link"
+            ><img class="icon-img" src="assets/icons/linkedin.png" alt="" aria-hidden="true" /></a
           >
         </div>
       </header>
@@ -66,17 +69,28 @@
               distributed integrations, and performance optimization.
             </p>
             <p class="hero-contact">
-              <a href="tel:+919572734502">+91 9572734502</a>
-              <span>|</span>
-              <a href="mailto:nihadprakarsh@gmail.com">nihadprakarsh@gmail.com</a>
-              <span>|</span>
-              <a href="https://www.linkedin.com/in/nihadprakarsh/" target="_blank" rel="noopener"
-                >LinkedIn</a
+              <a
+                href="mailto:nihadprakarsh@gmail.com"
+                class="icon-link icon-link-ghost"
+                aria-label="Email"
+                title="Email"
               >
+                <img class="icon-img" src="assets/icons/gmail.png" alt="" aria-hidden="true" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/nihadprakarsh/"
+                class="icon-link icon-link-ghost"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
+                <img class="icon-img" src="assets/icons/linkedin.png" alt="" aria-hidden="true" />
+              </a>
             </p>
             <div class="hero-actions">
               <a href="#experience" class="btn btn-primary">View Experience</a>
-              <a href="resume.pdf" class="btn btn-secondary">Download Resume</a>
+              <a href="resume.pdf" class="btn btn-secondary" download>Download Resume</a>
             </div>
 
             <div class="hero-visual reveal">
@@ -156,10 +170,18 @@
             <h3 class="sub-title">Achievements</h3>
             <div class="achievement-grid">
               <article
-                class="achievement-card achievement-card-featured journey-trigger reveal"
+                class="achievement-card achievement-card-featured achievement-card--icpc journey-trigger reveal"
               >
                 <div class="achievement-head">
-                  <span class="achievement-badge">ICPC</span>
+                  <span class="achievement-badge achievement-badge--icpc">
+                    <svg class="achievement-badge-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        fill="currentColor"
+                        d="M12 2.25c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9Zm0 3.1c-3.26 0-5.9 2.64-5.9 5.9s2.64 5.9 5.9 5.9 5.9-2.64 5.9-5.9-2.64-5.9-5.9-5.9Zm0 2.1a3.8 3.8 0 1 1 0 7.6 3.8 3.8 0 0 1 0-7.6Z"
+                      />
+                    </svg>
+                    ICPC
+                  </span>
                   <span class="achievement-meta">Asia Kanpur · 2023</span>
                 </div>
                 <p class="achievement-value">Rank 41</p>
@@ -178,10 +200,18 @@
                 </button>
               </article>
               <article
-                class="achievement-card achievement-card-featured journey-trigger reveal"
+                class="achievement-card achievement-card-featured achievement-card--icpc journey-trigger reveal"
               >
                 <div class="achievement-head">
-                  <span class="achievement-badge">ICPC</span>
+                  <span class="achievement-badge achievement-badge--icpc">
+                    <svg class="achievement-badge-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        fill="currentColor"
+                        d="M12 2.25c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9Zm0 3.1c-3.26 0-5.9 2.64-5.9 5.9s2.64 5.9 5.9 5.9 5.9-2.64 5.9-5.9-2.64-5.9-5.9-5.9Zm0 2.1a3.8 3.8 0 1 1 0 7.6 3.8 3.8 0 0 1 0-7.6Z"
+                      />
+                    </svg>
+                    ICPC
+                  </span>
                   <span class="achievement-meta">Asia Amritapuri · 2022</span>
                 </div>
                 <p class="achievement-value">Rank 96</p>
@@ -199,33 +229,71 @@
                   Play Journey
                 </button>
               </article>
-              <article class="achievement-card reveal">
+              <article class="achievement-card achievement-card--leetcode reveal">
                 <div class="achievement-head">
-                  <span class="achievement-badge achievement-badge-warm">LeetCode</span>
+                  <span class="achievement-badge achievement-badge--leetcode">
+                    <svg class="achievement-badge-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        fill="currentColor"
+                        d="M12.74 3.5a1 1 0 0 1 0 1.42L8.66 9h6.54a1 1 0 1 1 0 2H7.25a1.25 1.25 0 0 1-.88-2.14l4.95-4.95a1 1 0 0 1 1.42 0Z"
+                      />
+                      <path
+                        fill="currentColor"
+                        d="M10.1 7.6a1 1 0 0 1 1.42 0l6.2 6.2a3.4 3.4 0 1 1-4.81 4.8l-6.2-6.2a1 1 0 1 1 1.42-1.41l6.2 6.2a1.4 1.4 0 1 0 1.98-1.98l-6.2-6.2a1 1 0 0 1 0-1.42Z"
+                      />
+                    </svg>
+                    LeetCode
+                  </span>
                   <span class="achievement-meta">Peak</span>
                 </div>
                 <p class="achievement-value">2019</p>
                 <p class="achievement-label">LeetCode Max Rating (Knight)</p>
               </article>
-              <article class="achievement-card reveal">
+              <article class="achievement-card achievement-card--leetcode reveal">
                 <div class="achievement-head">
-                  <span class="achievement-badge achievement-badge-warm">LeetCode</span>
+                  <span class="achievement-badge achievement-badge--leetcode">
+                    <svg class="achievement-badge-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        fill="currentColor"
+                        d="M12.74 3.5a1 1 0 0 1 0 1.42L8.66 9h6.54a1 1 0 1 1 0 2H7.25a1.25 1.25 0 0 1-.88-2.14l4.95-4.95a1 1 0 0 1 1.42 0Z"
+                      />
+                      <path
+                        fill="currentColor"
+                        d="M10.1 7.6a1 1 0 0 1 1.42 0l6.2 6.2a3.4 3.4 0 1 1-4.81 4.8l-6.2-6.2a1 1 0 1 1 1.42-1.41l6.2 6.2a1.4 1.4 0 1 0 1.98-1.98l-6.2-6.2a1 1 0 0 1 0-1.42Z"
+                      />
+                    </svg>
+                    LeetCode
+                  </span>
                   <span class="achievement-meta">Consistency</span>
                 </div>
                 <p class="achievement-value">1200+</p>
                 <p class="achievement-label">LeetCode Problems Solved</p>
               </article>
-              <article class="achievement-card reveal">
+              <article class="achievement-card achievement-card--codeforces reveal">
                 <div class="achievement-head">
-                  <span class="achievement-badge achievement-badge-cool">Codeforces</span>
+                  <span class="achievement-badge achievement-badge--codeforces">
+                    <svg class="achievement-badge-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path fill="currentColor" d="M6.2 13.2a2.2 2.2 0 1 1 0-4.4 2.2 2.2 0 0 1 0 4.4Z" />
+                      <path fill="currentColor" d="M11.5 6.3c.7 0 1.2.5 1.2 1.2v10.2c0 .7-.5 1.2-1.2 1.2s-1.2-.5-1.2-1.2V7.5c0-.7.5-1.2 1.2-1.2Z" />
+                      <path fill="currentColor" d="M17.8 8.6c.7 0 1.2.5 1.2 1.2v7.9c0 .7-.5 1.2-1.2 1.2s-1.2-.5-1.2-1.2V9.8c0-.7.5-1.2 1.2-1.2Z" />
+                    </svg>
+                    Codeforces
+                  </span>
                   <span class="achievement-meta">Peak</span>
                 </div>
                 <p class="achievement-value">1427</p>
                 <p class="achievement-label">Codeforces Max Rating</p>
               </article>
-              <article class="achievement-card reveal">
+              <article class="achievement-card achievement-card--codeforces reveal">
                 <div class="achievement-head">
-                  <span class="achievement-badge achievement-badge-cool">Codeforces</span>
+                  <span class="achievement-badge achievement-badge--codeforces">
+                    <svg class="achievement-badge-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path fill="currentColor" d="M6.2 13.2a2.2 2.2 0 1 1 0-4.4 2.2 2.2 0 0 1 0 4.4Z" />
+                      <path fill="currentColor" d="M11.5 6.3c.7 0 1.2.5 1.2 1.2v10.2c0 .7-.5 1.2-1.2 1.2s-1.2-.5-1.2-1.2V7.5c0-.7.5-1.2 1.2-1.2Z" />
+                      <path fill="currentColor" d="M17.8 8.6c.7 0 1.2.5 1.2 1.2v7.9c0 .7-.5 1.2-1.2 1.2s-1.2-.5-1.2-1.2V9.8c0-.7.5-1.2 1.2-1.2Z" />
+                    </svg>
+                    Codeforces
+                  </span>
                   <span class="achievement-meta">Grind</span>
                 </div>
                 <p class="achievement-value">700+</p>
@@ -398,13 +466,23 @@
 
             <div class="hero-actions">
               <a href="mailto:nihadprakarsh@gmail.com" class="btn btn-primary">Get in Touch</a>
-              <a href="tel:+919572734502" class="btn btn-secondary">Call Me</a>
             </div>
           </div>
         </section>
       </main>
 
-      <footer class="site-footer">© 2026 Nihad Prakarsh. All rights reserved.</footer>
+      <footer class="site-footer">
+        © 2026 Nihad Prakarsh. All rights reserved.
+        <span class="footer-divider" aria-hidden="true">·</span>
+        <a
+          class="footer-credit"
+          href="https://www.flaticon.com/free-icons/linkedin"
+          title="linkedin icons"
+          target="_blank"
+          rel="noopener"
+          >Icons by riajulislam (Flaticon)</a
+        >
+      </footer>
     </div>
 
     <div class="journey-modal" id="journey-modal" hidden>
